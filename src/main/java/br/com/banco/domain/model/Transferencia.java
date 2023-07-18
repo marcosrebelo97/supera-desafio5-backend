@@ -1,14 +1,17 @@
 package br.com.banco.domain.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
 @Getter
 @Setter
-@Table(name = "tb_transferencia")
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Transferencia {
 
     @Id
@@ -18,13 +21,13 @@ public class Transferencia {
     @Column(name = "data_transferencia")
     private LocalDateTime dataTransferencia;
 
-    private Double valor;
+    private double valor;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipo_transferencia")
+    @Column(name = "tipo")
     private TipoTransferencia tipoTransferencia;
 
-    @Column(name = "nome_operador_transferencia")
+    @Column(name = "nome_operador_transacao")
     private String nomeOperadorTransacao;
 
     @ManyToOne

@@ -5,10 +5,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity
+
 @Getter
 @Setter
-@Table(name = "tb_conta")
+@Entity
 public class Conta {
 
     @Id
