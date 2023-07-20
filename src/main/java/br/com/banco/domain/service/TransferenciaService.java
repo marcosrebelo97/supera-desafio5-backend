@@ -1,11 +1,15 @@
 package br.com.banco.domain.service;
+import br.com.banco.domain.dto.TransferenciaDTO;
 import br.com.banco.domain.exception.NotFoundException;
 import br.com.banco.domain.repository.TransferenciaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.com.banco.domain.model.Transferencia;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -22,12 +26,9 @@ public class TransferenciaService {
         return transferencias;
     }
 
-    public List<Transferencia> buscarTransferencias(){
-        List<Transferencia> transferencias = transferenciaRepository.findAll();
-        if(transferencias.isEmpty()){
-            throw new NotFoundException("Não foram encontradas transferências.");
-        }
-        return transferencias;
+    @Transactional(readOnly = true)
+    public List<TransferenciaDTO> buscarTransferencias(){
+        return transferenciaRepository.findAll().stream().map(transferencia -> new TransferenciaDTO(transferencia)).collect(Collectors.toList());
     }
     
     public List<Transferencia> buscarTransferenciaOperador(String nome){

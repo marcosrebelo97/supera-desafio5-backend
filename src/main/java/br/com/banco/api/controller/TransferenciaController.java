@@ -1,11 +1,10 @@
 package br.com.banco.api.controller;
 
+import br.com.banco.domain.dto.TransferenciaDTO;
 import br.com.banco.domain.service.TransferenciaService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import br.com.banco.domain.model.Transferencia;
 import java.util.List;
@@ -25,8 +24,8 @@ public class TransferenciaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Transferencia>> listarTransferencias(){
-        List<Transferencia> transferencias = transferenciaService.buscarTransferencias();
+    public ResponseEntity<List<TransferenciaDTO>> listarTransferencias(){
+        List<TransferenciaDTO> transferencias = transferenciaService.buscarTransferencias();
         return ResponseEntity.ok().body(transferencias);
     }
 
