@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.banco.domain.model.Transferencia;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,5 +38,9 @@ public class TransferenciaService {
             throw new NotFoundException("Este operador não possui transações.");
         }
         return transferencias;
+    }
+
+    public List<Transferencia> buscarTransferenciaPeriodo(LocalDateTime inicio, LocalDateTime fim){
+        return transferenciaRepository.findAllByDataTransferenciaBetween(inicio, fim);
     }
 }

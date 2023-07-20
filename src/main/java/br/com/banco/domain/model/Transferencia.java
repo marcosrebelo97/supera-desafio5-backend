@@ -1,5 +1,6 @@
 package br.com.banco.domain.model;
 
+import br.com.banco.domain.dto.ContaDTO;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
