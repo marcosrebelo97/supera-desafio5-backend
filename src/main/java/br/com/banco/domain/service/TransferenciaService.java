@@ -21,4 +21,12 @@ public class TransferenciaService {
         }
         return transferencias;
     }
+
+    public List<Transferencia> buscarTransferencias(){
+        List<Transferencia> transferencias = transferenciaRepository.findAll();
+        if(transferencias.isEmpty()){
+            throw new NotFoundException("Não foram encontradas transferências.");
+        }
+        return transferencias;
+    }
 }

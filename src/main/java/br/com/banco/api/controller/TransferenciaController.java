@@ -1,6 +1,7 @@
 package br.com.banco.api.controller;
 
 import br.com.banco.domain.service.TransferenciaService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,12 @@ public class TransferenciaController {
     public ResponseEntity<List<Transferencia>> buscarContaTransferencia (@PathVariable Long idConta){
         List<Transferencia> transferencias = transferenciaService.buscarTransferenciaIdConta(idConta);
         return ResponseEntity.ok(transferencias);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Transferencia>> listarTransferencias(){
+        List<Transferencia> transferencias = transferenciaService.buscarTransferencias();
+        return ResponseEntity.ok().body(transferencias);
     }
 
 }
