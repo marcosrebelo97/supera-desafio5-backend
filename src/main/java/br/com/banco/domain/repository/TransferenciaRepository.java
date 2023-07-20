@@ -10,6 +10,6 @@ public interface TransferenciaRepository extends JpaRepository<Transferencia, Lo
 
     List<Transferencia> findAllByContaIdConta (Long idConta);
 
-    //List<Transferencia> findAllByOperadorTransacao(String nome);
+    List<Transferencia> findAllByNomeOperadorTransacao(String nome);
 
 }

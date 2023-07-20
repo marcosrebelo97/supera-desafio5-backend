@@ -21,7 +21,7 @@ public class TransferenciaController {
     @GetMapping(value = "/{idConta}")
     public ResponseEntity<List<Transferencia>> buscarContaTransferencia (@PathVariable Long idConta){
         List<Transferencia> transferencias = transferenciaService.buscarTransferenciaIdConta(idConta);
-        return ResponseEntity.ok(transferencias);
+        return ResponseEntity.ok().body(transferencias);
     }
 
     @GetMapping
@@ -30,10 +30,10 @@ public class TransferenciaController {
         return ResponseEntity.ok().body(transferencias);
     }
 
-    /*@GetMapping(value = "/operador")
-    public ResponseEntity<List<Transferencia>> buscarTransacaoOperador(@RequestParam String nome){
+    @GetMapping(value = "/operador/{nome}")
+    public ResponseEntity<List<Transferencia>> buscarTransferenciaOperador(@PathVariable String nome){
         List<Transferencia> transferencias = transferenciaService.buscarTransferenciaOperador(nome);
         return ResponseEntity.ok().body(transferencias);
-    }*/
+    }
 
 }
