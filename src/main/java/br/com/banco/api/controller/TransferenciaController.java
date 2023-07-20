@@ -6,10 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import br.com.banco.domain.model.Transferencia;
 import java.util.List;
 
@@ -32,5 +29,11 @@ public class TransferenciaController {
         List<Transferencia> transferencias = transferenciaService.buscarTransferencias();
         return ResponseEntity.ok().body(transferencias);
     }
+
+    /*@GetMapping(value = "/operador")
+    public ResponseEntity<List<Transferencia>> buscarTransacaoOperador(@RequestParam String nome){
+        List<Transferencia> transferencias = transferenciaService.buscarTransferenciaOperador(nome);
+        return ResponseEntity.ok().body(transferencias);
+    }*/
 
 }

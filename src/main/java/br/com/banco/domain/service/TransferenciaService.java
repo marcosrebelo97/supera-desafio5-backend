@@ -29,4 +29,12 @@ public class TransferenciaService {
         }
         return transferencias;
     }
+    
+    /*public List<Transferencia> buscarTransferenciaOperador(String nome){
+        List<Transferencia> transferencias = transferenciaRepository.findAllByOperadorTransacao(nome);
+        if(transferencias.isEmpty()){
+            throw new NotFoundException("Este operador não possui transações.");
+        }
+        return transferencias;
+    }*/
 }
