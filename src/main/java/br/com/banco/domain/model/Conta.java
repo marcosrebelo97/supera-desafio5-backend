@@ -1,13 +1,13 @@
 package br.com.banco.domain.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.*;
 import javax.persistence.*;
 
-
+@Data
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Conta {
 

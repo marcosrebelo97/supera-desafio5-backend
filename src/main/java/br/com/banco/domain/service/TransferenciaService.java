@@ -1,24 +1,24 @@
 package br.com.banco.domain.service;
-
-import br.com.banco.domain.exceptionhandler.ProductNotFoundException;
-import br.com.banco.domain.model.Transferencia;
+import br.com.banco.domain.exception.NotFoundException;
 import br.com.banco.domain.repository.TransferenciaRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
-
+import br.com.banco.domain.model.Transferencia;
+import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class TransferenciaService {
+
     @Autowired
-    private TransferenciaRepository transferenciaRepository;
+    private final TransferenciaRepository transferenciaRepository;
 
-    @Transactional(readOnly = true)
-    public Transferencia findById (Long idConta){
-        Optional<Transferencia> transferencia = transferenciaRepository.findById(idConta);
-        return transferencia.orElseThrow(() -> new ProductNotFoundException());
-
+    public List<Transferencia> buscarTransferenciaIdConta (Long idConta){
+        List<Transferencia> transferencias = transferenciaRepository.findAllByContaIdConta(idConta);
+        if(transferencias.isEmpty()){
+            throw new NotFoundException("Está conta não possui transações");
+        }
+        return transferencias;
     }
 }
