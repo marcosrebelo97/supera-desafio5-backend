@@ -23,5 +23,9 @@ public class SaldoService {
         return saldoTotal.setScale(2, RoundingMode.HALF_UP);
     }
 
+    public BigDecimal calcularSaldoTotal(){
+        return transferenciaRepository.calcularSaldoTotal();
+    }
+
 
 }

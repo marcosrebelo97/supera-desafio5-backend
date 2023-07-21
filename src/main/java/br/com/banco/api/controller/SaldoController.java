@@ -24,4 +24,10 @@ public class SaldoController {
         return ResponseEntity.ok(saldoTotal);
     }
 
+    @GetMapping(value = "/total")
+    public ResponseEntity<BigDecimal> calcularSaldoTotal(){
+        BigDecimal saldoTotal = saldoService.calcularSaldoTotal();
+        return ResponseEntity.ok(saldoTotal);
+    }
+
 }

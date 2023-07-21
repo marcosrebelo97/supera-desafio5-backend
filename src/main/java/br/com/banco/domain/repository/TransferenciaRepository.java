@@ -20,4 +20,7 @@ public interface TransferenciaRepository extends JpaRepository<Transferencia, Lo
 
     @Query("SELECT SUM(t.valor) FROM Transferencia t WHERE t.conta.id = :idConta")
     BigDecimal calcularSaldoTotalConta(Long idConta);
+
+    @Query("SELECT COALESCE(SUM(t.valor), 0) FROM Transferencia t")
+    BigDecimal calcularSaldoTotal();
 }
