@@ -40,12 +40,13 @@ public class TransferenciaController {
     }
 
     @GetMapping(value = "/periodo")
-    public ResponseEntity<List<Transferencia>> buscarTransferenciaPeriodo(
-            @RequestParam(required = false) String inicio, @RequestParam(required = false) String fim){
+    public ResponseEntity<List<Transferencia>> buscarTransferenciasPorPeriodo(
+            @RequestParam(required = false) String inicio,
+            @RequestParam(required = false) String fim) {
         LocalDateTime dataInicio = inicio != null ? LocalDate.parse(inicio).atStartOfDay() : null;
-        LocalDateTime dataFinal = fim != null ? LocalDate.parse(fim).atTime(LocalTime.MAX) : null;
+        LocalDateTime dataFim = fim != null ? LocalDate.parse(fim).atTime(LocalTime.MAX) : null;
 
-        List<Transferencia> transferencias = transferenciaService.buscarTransferenciaPeriodo(dataInicio, dataFinal);
+        List<Transferencia> transferencias = transferenciaService.buscarTransferenciasPorPeriodo(dataInicio, dataFim);
         return ResponseEntity.ok(transferencias);
     }
 

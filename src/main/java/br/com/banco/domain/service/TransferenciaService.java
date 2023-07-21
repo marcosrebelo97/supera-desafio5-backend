@@ -40,7 +40,7 @@ public class TransferenciaService {
         return transferencias;
     }
 
-    public List<Transferencia> buscarTransferenciaPeriodo(LocalDateTime inicio, LocalDateTime fim){
+    public List<Transferencia> buscarTransferenciasPorPeriodo(LocalDateTime inicio, LocalDateTime fim) {
         return transferenciaRepository.findAllByDataTransferenciaBetween(inicio, fim);
     }
 }
