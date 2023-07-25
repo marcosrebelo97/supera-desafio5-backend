@@ -20,11 +20,8 @@ public class TransferenciaDTO {
     private BigDecimal valor;
     private String tipo;
     private String nomeOperadorTransacao;
-
     private Conta conta;
-    public void Conta(Conta conta){
 
-    }
 
     public TransferenciaDTO(Transferencia transferencia){
         dataTransferencia = transferencia.getDataTransferencia();
